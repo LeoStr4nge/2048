@@ -1,6 +1,6 @@
 #pragma once
-#define BOX_SIZE 100  //格子大小	
-#define INTERVAL 15  //格子间隔
+#define BOX_SIZE 80  //格子大小	
+#define INTERVAL 12  //格子间隔
 
 /// <summary>
 /// 创建a*a的棋盘
