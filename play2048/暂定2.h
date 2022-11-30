@@ -154,30 +154,31 @@ void move_right()
 /// <summary>
 /// °´¼ü²Ù×÷
 /// </summary>
-void read_key()
+int read_key()
 {
 	char key = _getch();
 	switch (key)
 	{
 	case'w':
 	case'W':
-	case 72:
 		move_up();
+		return 1;
 		break;
 	case'a':
 	case'A':
-	case 75:
 		move_left();
+		return 1;
 		break;
 	case's':
 	case'S':
-	case 80:
 		move_down();
+		return 1;
 		break;
 	case'd':
 	case'D':
-	case 77:
 		move_right();
+		return 1;
 		break;
 	}
+	return 0;
 }

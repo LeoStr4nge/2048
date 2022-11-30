@@ -46,22 +46,29 @@ int main()
 
 
 
-
-
+	
 	//绘制界面
-	initgraph((cb_size + 1) * INTERVAL + cb_size * BOX_SIZE, (cb_size + 1) * INTERVAL + cb_size * BOX_SIZE+60);
+	initgraph((cb_size + 1) * INTERVAL + cb_size * BOX_SIZE, 80+(cb_size + 1) * INTERVAL + cb_size * BOX_SIZE+60);
 	while (1)
 	{
-	input_number();
-	score_a(cb_size);
-	cre_box(cb_size);//创建棋盘
-	read_key();
-
-	}	system("PAUSE");//暂停界面，便于观察
+	
+		cre_box(cb_size);//创建棋盘
+	
+		if (read_key())//按键操作
+		input_number(cb_size);//将随机数输入到数组
+		score_a(cb_size);//在图形界面实时显示分数
+		max_score();//显示最高分
+	for(int i=0;i<cb_size;i++)
+		for (int j = 0; j < cb_size; j++) {
+			if (map[i][j] == 2048) {
+				return 0;
+			}
+		}
+	}
+	system("PAUSE");//暂停界面，便于观察
 
 
 
 	closegraph();
     return 0;
 }
-
