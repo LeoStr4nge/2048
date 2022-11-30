@@ -46,13 +46,21 @@ int main()
 
 
 
-	input_number();
+
 
 	//绘制界面
 	initgraph((cb_size + 1) * INTERVAL + cb_size * BOX_SIZE, (cb_size + 1) * INTERVAL + cb_size * BOX_SIZE+60);
-	cre_box(cb_size);//创建棋盘
+	while (1)
+	{
+	input_number();
 	score_a(cb_size);
-	system("PAUSE");//暂停界面，便于观察
+	cre_box(cb_size);//创建棋盘
+	read_key();
+
+	}	system("PAUSE");//暂停界面，便于观察
+
+
+
 	closegraph();
     return 0;
 }

@@ -34,7 +34,7 @@ void cre_box(int a )   //创建棋盘
 /// <summary>
 /// 创建随机数
 /// </summary>
-/// <returns></returns>
+/// <returns>2或4</returns>
 int cre_number()
 {
 	srand((unsigned)time(NULL)+clock());
