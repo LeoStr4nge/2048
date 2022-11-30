@@ -4,13 +4,13 @@
 #include<time.h>
 #include<conio.h>
 int map[10][10];//装棋盘数据的二维数组
+int cb_size;//棋盘大小
 #include "暂定.h"
 #include "暂定2.h"
 int main()
 {
 	int order;//菜单界面输入的命令
 	char trash;//用来装多输入的非法字符
-	int cb_size;  //棋盘大小
 	printf("欢迎游玩2048\n");
 	while (1)
 	{
@@ -49,8 +49,9 @@ int main()
 	input_number();
 
 	//绘制界面
-	initgraph((cb_size + 1) * INTERVAL + cb_size * BOX_SIZE, (cb_size + 1) * INTERVAL + cb_size * BOX_SIZE);
+	initgraph((cb_size + 1) * INTERVAL + cb_size * BOX_SIZE, (cb_size + 1) * INTERVAL + cb_size * BOX_SIZE+60);
 	cre_box(cb_size);//创建棋盘
+	score_a(cb_size);
 	system("PAUSE");//暂停界面，便于观察
 	closegraph();
     return 0;

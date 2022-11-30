@@ -1,5 +1,5 @@
 #pragma once
-extern int cb_size;
+
 void move_up()
 {
 
