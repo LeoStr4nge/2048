@@ -48,7 +48,7 @@ int main()
 
 	
 	//ªÊ÷∆ΩÁ√Ê
-	initgraph((cb_size + 1) * INTERVAL + cb_size * BOX_SIZE, 80+(cb_size + 1) * INTERVAL + cb_size * BOX_SIZE+60);
+	initgraph((cb_size + 1) * INTERVAL + cb_size * BOX_SIZE, (cb_size + 1) * INTERVAL + cb_size * BOX_SIZE+120);
 	while (1)
 	{
 	
