@@ -20,10 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="暂定.h">
+    <ClInclude Include="任政.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="暂定2.h">
+    <ClInclude Include="刘异.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

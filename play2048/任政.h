@@ -22,6 +22,20 @@ void scoreA(int a)
 		int xTemp = (148 - tw) / 2;
 		int yTemp = (108 - th) / 2; 
 		outtextxy(xTemp+12, yTemp+12, str);
+		solidroundrect(184, 12, 360, 66, 10, 10);
+		char top[10] = { "top:" };
+		settextstyle(50, 20, "Matura MT Script Capitals");
+		outtextxy(184, 24, top);
+		solidroundrect(184, 78, 266, 122, 10, 10);
+		char regret[10] = "悔棋(R)";
+		settextstyle(20, 12, "楷体");
+		outtextxy(184, 90, regret);
+
+		solidroundrect(278, 78, 360, 122, 10, 10);
+		char anew[14] = "保存并退出(I)";
+		settextstyle(20, 12, "楷体");
+		outtextxy(278, 90, anew);
+
 
 }
 

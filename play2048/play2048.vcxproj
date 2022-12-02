@@ -145,8 +145,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="暂定.h" />
-    <ClInclude Include="暂定2.h" />
+    <ClInclude Include="任政.h" />
+    <ClInclude Include="刘异.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

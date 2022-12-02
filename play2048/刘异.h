@@ -153,8 +153,28 @@ void moveRight()
 }
 
 /// <summary>
+/// 保存游戏存档
+/// </summary>
+void saveGame()
+{
+	FILE* save = fopen("save.txt", "wb");
+	if (save == NULL)
+	{
+		printf("文件错误\n");
+		exit(1);
+	}
+	else
+	{
+		int sum = cbSize * cbSize;
+		fwrite(map, sizeof(int), sum, save);
+		fclose(save);
+	}
+}
+
+/// <summary>
 /// 按键操作
 /// </summary>
+/// <returns>1或0，wasd操作返回1，其他操作返回0</returns>
 int readKey()
 {
 	char key = _getch();
@@ -180,33 +200,13 @@ int readKey()
 		moveRight();
 		return 1;
 		break;
+	case'I':
+	case'i':
+		saveGame();
+		return 0;
+		break;
 	}
 	return 0;
-}
-
-/// <summary>
-/// 保存游戏存档
-/// </summary>
-void saveGame()
-{
-	FILE * save = fopen("save.txt", "wb");
-	if (save == NULL)
-	{
-		printf("文件错误\n");
-		exit(1);
-	}
-	else
-	{
-		int sum = cbSize * cbSize;
-		for (int i = 0; i < cbSize; i++)
-		{
-			for (int j = 0; j < cbSize; j++)
-			{
-				fwrite(map, sizeof(int), sum, save);
-			}
-		}
-		fclose(save);
-	}
 }
 
 /// <summary>
@@ -223,13 +223,7 @@ void loadSave()
 	else
 	{
 		int sum = cbSize * cbSize;
-		for (int i = 0; i < cbSize; i++)
-		{
-			for (int j = 0; j < cbSize; j++)
-			{
-				fread(&map[i][j], sizeof(int), sum, save);
-			}
-		}
-		fclose(save);
+		fread(&map, sizeof(int), sum, save);
 	}
+		fclose(save);
 }
