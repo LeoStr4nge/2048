@@ -4,7 +4,7 @@
 #include<time.h>
 #include<conio.h>
 int map[10][10];//装棋盘数据的二维数组
-int cb_size;//棋盘大小
+int cbSize;//棋盘大小
 #include "暂定.h"
 #include "暂定2.h"
 int main()
@@ -23,10 +23,10 @@ int main()
 		{
 			while (1)//自定义棋盘
 			{
-				printf("请输入每边的格子数（2～9）：");
-				scanf("%d", &cb_size);
+				printf("请输入每边的格子数（4～9）：");
+				scanf("%d", &cbSize);
 				while ((trash = getchar()) != '\n');//清空输入缓冲区
-				if (cb_size < 2 || cb_size > 9)
+				if (cbSize < 2 || cbSize > 9)
 				{
 					printf("输入错误,");
 				}
@@ -37,9 +37,8 @@ int main()
 
 		else if (order == 2)
 		{
-			printf("存档系统还没做好呢");
-			return 0;
-
+			loadSave();
+			break;
 		}
 		else printf("输入错误\n");
 	}
@@ -48,20 +47,23 @@ int main()
 
 	
 	//绘制界面
-	initgraph((cb_size + 1) * INTERVAL + cb_size * BOX_SIZE, (cb_size + 1) * INTERVAL + cb_size * BOX_SIZE+120);
-	while (1)
+	initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE+120);
+	int inGame = 1;
+	while (inGame == 1 )
 	{
 	
-		cre_box(cb_size);//创建棋盘
+		creBox(cbSize);//创建棋盘
 	
-		if (read_key())//按键操作
-		input_number(cb_size);//将随机数输入到数组
-		score_a(cb_size);//在图形界面实时显示分数
-		max_score();//显示最高分
-	for(int i=0;i<cb_size;i++)
-		for (int j = 0; j < cb_size; j++) {
+		if (readKey())//按键操作
+		inputNumber(cbSize);//将随机数输入到数组
+		scoreA(cbSize);//在图形界面实时显示分数
+		maxScore();//显示最高分
+	for(int i=0;i<cbSize;i++)
+		for (int j = 0; j < cbSize; j++) {
 			if (map[i][j] == 2048) {
-				return 0;
+				saveGame();
+				inGame = 0;
+				break;
 			}
 		}
 	}

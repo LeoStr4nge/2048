@@ -1,14 +1,15 @@
 #pragma once
+#include <wincrypt.h>
 /// <summary>
 /// 格子向上移动
 /// </summary>
-void move_up()
+void moveUp()
 {
 
-	for (int i = 0; i < cb_size; i++)
+	for (int i = 0; i < cbSize; i++)
 	{
 		int temp = 0;
-		for (int begin = 1; begin < cb_size; begin++)
+		for (int begin = 1; begin < cbSize; begin++)
 		{
 			if (map[begin][i] != 0)//找到需要移动的格子
 			{
@@ -40,13 +41,13 @@ void move_up()
 /// <summary>
 /// 格子向下移动
 /// </summary>
-void move_down()
+void moveDown()
 {
 
-	for (int i = 0; i < cb_size; i++)
+	for (int i = 0; i < cbSize; i++)
 	{
-		int temp = cb_size - 1;
-		for (int begin = cb_size - 2; begin >= 0; begin--)
+		int temp = cbSize - 1;
+		for (int begin = cbSize - 2; begin >= 0; begin--)
 		{
 			if (map[begin][i] != 0)//找到需要移动的格子
 			{
@@ -78,13 +79,13 @@ void move_down()
 /// <summary>
 /// 格子向左移动
 /// </summary>
-void move_left()
+void moveLeft()
 {
 
-	for (int i = 0; i < cb_size; i++)
+	for (int i = 0; i < cbSize; i++)
 	{
 		int temp = 0;
-		for (int begin = 1; begin < cb_size; begin++)
+		for (int begin = 1; begin < cbSize; begin++)
 		{
 			if (map[i][begin] != 0)//找到需要移动的格子
 			{
@@ -116,13 +117,13 @@ void move_left()
 /// <summary>
 /// 格子向右移动
 /// </summary>
-void move_right()
+void moveRight()
 {
 
-	for (int i = 0; i < cb_size; i++)
+	for (int i = 0; i < cbSize; i++)
 	{
-		int temp = cb_size - 1;
-		for (int begin = cb_size - 2; begin >= 0; begin--)
+		int temp = cbSize - 1;
+		for (int begin = cbSize - 2; begin >= 0; begin--)
 		{
 			if (map[i][begin] != 0)//找到需要移动的格子
 			{
@@ -154,31 +155,81 @@ void move_right()
 /// <summary>
 /// 按键操作
 /// </summary>
-int read_key()
+int readKey()
 {
 	char key = _getch();
 	switch (key)
 	{
 	case'w':
 	case'W':
-		move_up();
+		moveUp();
 		return 1;
 		break;
 	case'a':
 	case'A':
-		move_left();
+		moveLeft();
 		return 1;
 		break;
 	case's':
 	case'S':
-		move_down();
+		moveDown();
 		return 1;
 		break;
 	case'd':
 	case'D':
-		move_right();
+		moveRight();
 		return 1;
 		break;
 	}
 	return 0;
+}
+
+/// <summary>
+/// 保存游戏存档
+/// </summary>
+void saveGame()
+{
+	FILE * save = fopen("save.txt", "wb");
+	if (save == NULL)
+	{
+		printf("文件错误\n");
+		exit(1);
+	}
+	else
+	{
+		int sum = cbSize * cbSize;
+		for (int i = 0; i < cbSize; i++)
+		{
+			for (int j = 0; j < cbSize; j++)
+			{
+				fwrite(map, sizeof(int), sum, save);
+			}
+		}
+		fclose(save);
+	}
+}
+
+/// <summary>
+/// 加载存档
+/// </summary>
+void loadSave()
+{
+	FILE* save = fopen("save.txt", "r");
+	if (save == NULL)
+	{
+		printf("文件错误\n");
+		exit(1);
+	}
+	else
+	{
+		int sum = cbSize * cbSize;
+		for (int i = 0; i < cbSize; i++)
+		{
+			for (int j = 0; j < cbSize; j++)
+			{
+				fread(&map[i][j], sizeof(int), sum, save);
+			}
+		}
+		fclose(save);
+	}
 }
