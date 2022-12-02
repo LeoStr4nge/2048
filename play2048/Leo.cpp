@@ -236,3 +236,41 @@ void loadSave()
 	}
 }
 
+/// <summary>
+/// 保存分数
+/// </summary>
+/// <param name="score">分数</param>
+void saveScore(int score)
+{
+	FILE* fscore = fopen("score.txt", "wb");
+	if (fscore == NULL)
+	{
+		printf("文件错误\n");
+		exit(1);
+	}
+	else 
+	{
+		fwrite(&score, sizeof(int), 1, fscore);
+		fclose(fscore);
+	}
+}
+/// <summary>
+/// 读取分数
+/// </summary>
+/// <returns>保存在文件里的分数</returns>
+int loadScore()
+{
+	int score;
+	FILE* fscore = fopen("score.txt", "rb");
+	if (fscore == NULL)
+	{
+		printf("文件错误\n");
+		exit(1);
+	}
+	else
+	{
+		fread(&score, sizeof(int), 1, fscore);
+		fclose(fscore);
+		return score;
+	}
+}

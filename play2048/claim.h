@@ -65,3 +65,15 @@ int readKey();
 /// 加载存档
 /// </summary>
 void loadSave();
+
+/// <summary>
+/// 保存分数
+/// </summary>
+/// <param name="score">分数</param>
+void saveScore(int score);
+
+/// <summary>
+/// 读取分数
+/// </summary>
+/// <returns>保存在文件里的分数</returns>
+int loadScore();
