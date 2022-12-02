@@ -18,13 +18,14 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="任政.h">
+    <ClCompile Include="Leo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="renzhi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="claim.h">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="刘异.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
+    </ClCompile>
   </ItemGroup>
 </Project>

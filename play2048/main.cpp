@@ -3,10 +3,9 @@
 #include<stdlib.h>
 #include<time.h>
 #include<conio.h>
+#include"claim.h"
 int map[10][10];//装棋盘数据的二维数组
-int cbSize = 4;//棋盘大小
-#include "任政.h"
-#include "刘异.h"
+int cbSize = 4;//棋盘大小，默认为4
 int main()
 {
 	int order;//菜单界面输入的命令
@@ -26,7 +25,7 @@ int main()
 				printf("请输入每边的格子数（4～9）：");
 				scanf("%d", &cbSize);
 				while ((trash = getchar()) != '\n');//清空输入流缓冲区
-				if (cbSize < 2 || cbSize > 9)
+				if (cbSize < 4 || cbSize > 9)
 				{
 					printf("输入错误,");
 				}
@@ -45,7 +44,6 @@ int main()
 
 
 
-	
 	//绘制游戏界面
 	initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE+120);
 	int inGame = 1;//表示玩家还在游戏进程中，默认为1
@@ -63,7 +61,7 @@ int main()
 		for (int j = 0; j < cbSize; j++) {
 			if (map[i][j] == 2048) {
 
-				//这里需要一个显示“你赢了”的图形函数
+				//这里需要一个能显示“你赢了”的图形函数
 				inGame = 0;
 				break;
 			}

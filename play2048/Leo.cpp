@@ -1,5 +1,9 @@
-#pragma once
-#include <wincrypt.h>
+#include<stdio.h>
+#include<graphics.h>
+#include<stdlib.h>
+#include<conio.h>
+extern int cbSize;
+extern int map[10][10];
 /// <summary>
 /// 格子向上移动
 /// </summary>
@@ -152,29 +156,12 @@ void moveRight()
 	}
 }
 
-/// <summary>
-/// 保存游戏存档
-/// </summary>
-void saveGame()
-{
-	FILE* save = fopen("save.txt", "wb");
-	if (save == NULL)
-	{
-		printf("文件错误\n");
-		exit(1);
-	}
-	else
-	{
-		int sum = cbSize * cbSize;
-		fwrite(map, sizeof(int), sum, save);
-		fclose(save);
-	}
-}
 
 /// <summary>
 /// 按键操作
 /// </summary>
 /// <returns>1或0，wasd操作返回1，其他操作返回0</returns>
+void saveGame();//声明readKey中将要用到的自定义函数
 int readKey()
 {
 	char key = _getch();
@@ -210,11 +197,11 @@ int readKey()
 }
 
 /// <summary>
-/// 加载存档
+/// 保存游戏存档
 /// </summary>
-void loadSave()
+void saveGame()
 {
-	FILE* save = fopen("save.txt", "r");
+	FILE* save = fopen("save.txt", "wb");
 	if (save == NULL)
 	{
 		printf("文件错误\n");
@@ -222,8 +209,30 @@ void loadSave()
 	}
 	else
 	{
-		int sum = cbSize * cbSize;
-		fread(&map, sizeof(int), sum, save);
-	}
+		fwrite(&cbSize, sizeof(int), 1, save);
+		int sum = cbSize * 10;
+		fwrite(map, sizeof(int), sum, save);
 		fclose(save);
+	}
 }
+
+/// <summary>
+/// 加载存档
+/// </summary>
+void loadSave()
+{
+	FILE* save = fopen("save.txt", "rb");
+	if (save == NULL)
+	{
+		printf("文件错误\n");
+		exit(1);
+	}
+	else
+	{
+		fread(&cbSize, sizeof(int), 1, save);
+		int sum = cbSize * 10;
+		fread(map, sizeof(int), sum, save);
+		fclose(save);
+	}
+}
+
