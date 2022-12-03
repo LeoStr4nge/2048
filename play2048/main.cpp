@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include<conio.h>
+#include<Windows.h>
 #include"claim.h"
 int map[10][10];//装棋盘数据的二维数组
 int cbSize = 4;//棋盘大小，默认为4
@@ -42,14 +43,28 @@ int main()
 		else printf("输入错误\n");
 	}
 
+	initgraph(600, 250);
+	char str1[200] = { "抵制不良游戏，拒绝盗版游戏." };
+	char str2[200] = "注意自我保护，谨防受骗上当.";
+	char str3[200] = "适度游戏益脑，沉迷游戏伤身.";
+	char str4[200] = "合理安排时间，享受健康生活.";
+	settextstyle(40, 20, "黑体");
 
 
+	outtextxy(20, 20, str1);
+	outtextxy(20, 80, str2);
+	outtextxy(20, 140, str3);
+	outtextxy(20, 200, str4);
+		
+
+	system("PAUSE");
 	//绘制游戏界面
-	initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE+120);
+	
+	initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE+200);
 	int inGame = 1;//表示玩家还在游戏进程中，默认为1
+	
 	while (inGame == 1 )
 	{
-	
 		creBox(cbSize);//创建棋盘
 	
 		if (readKey())//判断该指令是否需要产生随机数
@@ -62,6 +77,7 @@ int main()
 			if (map[i][j] == 2048) {
 
 				//这里需要一个能显示“你赢了”的图形函数
+				prWin();
 				inGame = 0;
 				break;
 			}

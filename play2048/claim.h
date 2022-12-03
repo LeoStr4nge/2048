@@ -77,3 +77,11 @@ void saveScore(int score);
 /// </summary>
 /// <returns>保存在文件里的分数</returns>
 int loadScore();
+/// <summary>
+/// 输出赢了界面
+/// </summary>
+void prWin();
+// <summary>
+/// 防沉迷警告
+/// </summary>
+void antiAddiction();

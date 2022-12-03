@@ -37,7 +37,7 @@ void scoreA(int a)
 	outtextxy(184, 90, regret);
 
 	solidroundrect(278, 78, 360, 122, 10, 10);
-	char anew[14] = "保存并退出(I)";
+	char anew[14] = "保存(I)";
 	settextstyle(20, 12, "楷体");
 	outtextxy(278, 90, anew);
 
@@ -59,7 +59,7 @@ void creBox(int a)   //创建棋盘
 			int x = (j + 1) * INTERVAL + j * BOXSIZE;
 			int y = (i + 1) * INTERVAL + i * BOXSIZE;
 			setfillcolor(RGB(205, 193, 180));//设置格子颜色
-			solidroundrect(x, y + 120, x + BOXSIZE, y + BOXSIZE + 120, 10, 10);
+			solidroundrect(x, y + 200, x + BOXSIZE, y + BOXSIZE + 200, 10, 10);
 			settextstyle(40, 0, "黑体");//文字格式
 			setbkmode(1);//文字背景颜色透明
 			char str[10] = "";//将int 转换成char
@@ -70,7 +70,7 @@ void creBox(int a)   //创建棋盘
 			int xTemp = (80 - tw) / 2;
 			int yTemp = (80 - th) / 2;
 			if (map[i][j] != 0) {
-				outtextxy(x + xTemp, y + yTemp + 120, str);
+				outtextxy(x + xTemp, y + yTemp + 200, str);
 
 			}// 将数字在格子中显示
 
@@ -120,3 +120,32 @@ void maxScore()
 	settextstyle(30, 0, "楷体");//文字格式
 	outtextxy(5, 5, cf);
 }
+/// <summary>
+/// 输出赢了界面
+/// </summary>
+void prWin()
+{
+	initgraph(300,300);
+	char str[10] = "你赢麻了";
+	settextstyle(30, 30, "楷体");//文字格式
+	outtextxy(5, 5, str);
+}
+
+/// <summary>
+/// 防沉迷警告
+/// </summary>
+void antiAddiction()
+{
+	char str1[200] = { "抵制不良游戏，拒绝盗版游戏." };
+	char str2[200] = "注意自我保护，谨防受骗上当.";
+	char str3[200] = "适度游戏益脑，沉迷游戏伤身.";
+	char str4[200] = "合理安排时间，享受健康生活.";
+	settextstyle(40, 20, "黑体");
+
+
+	outtextxy(20, 20, str1);
+	outtextxy(20, 80, str2);
+	outtextxy(20, 140, str3);
+	outtextxy(20, 200, str4);
+}
+	

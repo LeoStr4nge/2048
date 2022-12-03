@@ -213,7 +213,12 @@ void saveGame()
 		int sum = cbSize * 10;
 		fwrite(map, sizeof(int), sum, save);
 		fclose(save);
+		initgraph(300, 200);
+		char str[10] = "已保存";
+		settextstyle(40, 30, "华文琥珀");
+		outtextxy(50, 75, str);
 	}
+	
 }
 
 /// <summary>
