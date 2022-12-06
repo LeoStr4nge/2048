@@ -85,3 +85,7 @@ void prWin();
 /// ╥юЁацт╬╞╦Ф
 /// </summary>
 void antiAddiction();
+/// <summary>
+/// отй╬дЦйДак
+/// </summary>
+void prLost();

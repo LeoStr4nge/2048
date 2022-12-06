@@ -100,6 +100,7 @@ int main()
 			creBox(cbSize);
 			scoreA(cbSize);
 			//这里需要一个显示游戏结束的函数
+			prLost();
 			inGame = 0;
 			break;
 		}

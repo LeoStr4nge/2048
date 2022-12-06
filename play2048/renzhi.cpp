@@ -130,6 +130,16 @@ void prWin()
 	settextstyle(30, 30, "楷体");//文字格式
 	outtextxy(5, 5, str);
 }
+/// <summary>
+/// 显示你输了
+/// </summary>
+void prLost()
+{
+	initgraph(300, 300);
+	char str[10] = "you lost";
+	settextstyle(30, 30, "楷体");//文字格式
+	outtextxy(5, 5, str);
+}
 
 /// <summary>
 /// 防沉迷警告
