@@ -76,7 +76,7 @@ void creBox(int a)   //创建棋盘
 
 
 		}
-	scoreA(a);//显示实时分数；
+
 }
 /// <summary>
 /// 创建随机数

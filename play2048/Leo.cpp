@@ -2,8 +2,11 @@
 #include<graphics.h>
 #include<stdlib.h>
 #include<conio.h>
+#define BOXSIZE 80  //格子大小	
+#define INTERVAL 12  //格子间隔
 extern int cbSize;
 extern int map[10][10];
+extern char username[11];
 /// <summary>
 /// 格子向上移动
 /// </summary>
@@ -190,6 +193,8 @@ int readKey()
 	case'I':
 	case'i':
 		saveGame();
+		Sleep(2000);
+		initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE + 200);
 		return 0;
 		break;
 	}
@@ -209,6 +214,7 @@ void saveGame()
 	}
 	else
 	{
+		fwrite(username, sizeof(char), 11, save);
 		fwrite(&cbSize, sizeof(int), 1, save);
 		int sum = cbSize * 10;
 		fwrite(map, sizeof(int), sum, save);
@@ -234,6 +240,7 @@ void loadSave()
 	}
 	else
 	{
+		fread(username, sizeof(char), 11, save);
 		fread(&cbSize, sizeof(int), 1, save);
 		int sum = cbSize * 10;
 		fread(map, sizeof(int), sum, save);
@@ -242,7 +249,7 @@ void loadSave()
 }
 
 /// <summary>
-/// 保存分数
+/// 保存用户名及分数
 /// </summary>
 /// <param name="score">分数</param>
 void saveScore(int score)
@@ -255,12 +262,13 @@ void saveScore(int score)
 	}
 	else 
 	{
+		fwrite(username, sizeof(char), 11, fscore);
 		fwrite(&score, sizeof(int), 1, fscore);
 		fclose(fscore);
 	}
 }
 /// <summary>
-/// 读取分数
+/// 读取用户名及分数
 /// </summary>
 /// <returns>保存在文件里的分数</returns>
 int loadScore()
@@ -274,6 +282,7 @@ int loadScore()
 	}
 	else
 	{
+		fread(username, sizeof(char), 11, fscore);
 		fread(&score, sizeof(int), 1, fscore);
 		fclose(fscore);
 		return score;
