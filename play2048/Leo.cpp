@@ -2,11 +2,15 @@
 #include<graphics.h>
 #include<stdlib.h>
 #include<conio.h>
+#include"claim.h"
 #define BOXSIZE 80  //格子大小	
 #define INTERVAL 12  //格子间隔
 extern int cbSize;
 extern int map[10][10];
+extern int preMap1[10][10];
+extern int preMap2[10][10];
 extern char username[11];
+extern int count;
 /// <summary>
 /// 格子向上移动
 /// </summary>
@@ -197,6 +201,13 @@ int readKey()
 		initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE + 200);
 		return 0;
 		break;
+	case'R':
+	case'r':
+		if (count % 2 == 0)
+			memcpy(map, preMap1, sizeof(int) * 100);
+		else memcpy(map, preMap2, sizeof(int) * 100);
+		creBox(cbSize);
+		return 0;
 	}
 	return 0;
 }
@@ -268,23 +279,26 @@ void saveScore(int score)
 	}
 }
 /// <summary>
-/// 读取用户名及分数
+/// 加载分数
 /// </summary>
-/// <returns>保存在文件里的分数</returns>
-int loadScore()
+/// <param name="preUsername">前用户名的首地址</param>
+/// <returns>保存的最高分</returns>
+int loadScore(char* preUsername)
 {
 	int score;
 	FILE* fscore = fopen("score.txt", "rb");
 	if (fscore == NULL)
 	{
-		printf("文件错误\n");
-		exit(1);
+		printf("文件错误或初次运行\n已创建新的score文件\n");
+		FILE* fscore = fopen("score.txt", "wb");
+		fclose(fscore);
 	}
 	else
 	{
-		fread(username, sizeof(char), 11, fscore);
+		fread(preUsername, sizeof(char), 11, fscore);
 		fread(&score, sizeof(int), 1, fscore);
 		fclose(fscore);
 		return score;
 	}
 }
+

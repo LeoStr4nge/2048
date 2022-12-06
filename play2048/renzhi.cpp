@@ -8,7 +8,7 @@ extern int map[10][10];
 extern int cbSize;
 
 /// <summary>
-/// 在图形界面显示实时分数
+/// 在图形界面显示各种参数
 /// </summary>
 /// <param name="a">格子数cbSize</param>
 void scoreA(int a)
@@ -126,7 +126,7 @@ void maxScore()
 void prWin()
 {
 	initgraph(300,300);
-	char str[10] = "你赢麻了";
+	char str[10] = "你赢了";
 	settextstyle(30, 30, "楷体");//文字格式
 	outtextxy(5, 5, str);
 }
@@ -136,7 +136,7 @@ void prWin()
 void prLost()
 {
 	initgraph(300, 300);
-	char str[10] = "you lost";
+	char str[10] = "你输了";
 	settextstyle(30, 30, "楷体");//文字格式
 	outtextxy(5, 5, str);
 }

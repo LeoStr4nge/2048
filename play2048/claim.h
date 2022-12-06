@@ -73,10 +73,12 @@ void loadSave();
 void saveScore(int score);
 
 /// <summary>
-/// 读取分数
+/// 加载分数
 /// </summary>
-/// <returns>保存在文件里的分数</returns>
-int loadScore();
+/// <param name="preUsername">前用户名的首地址</param>
+/// <returns>保存的最高分</returns>
+int loadScore(char* preUsername);
+
 /// <summary>
 /// 输出赢了界面
 /// </summary>

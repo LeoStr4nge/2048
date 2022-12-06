@@ -6,10 +6,19 @@
 #include<Windows.h>
 #include"claim.h"
 int map[10][10];//装棋盘数据的二维数组
+int preMap1[10][10];//装悔棋棋盘的二维数组
+int preMap2[10][10];
 int cbSize = 4;//棋盘大小，默认为4
+int count = 0;//记录游戏进行了几步
 char username[11] = { 0 };
+typedef struct rank
+{
+	char names[10];
+	int scores[10];
+}rank;
 int main()
 {
+	rank rankings;
 	int order;//菜单界面输入的命令
 	char trash;//用来装多输入的非法字符
 	printf("欢迎游玩2048\n");
@@ -83,6 +92,9 @@ int main()
 		scoreA(cbSize);//在图形界面实时显示分数
 	 	maxScore();//显示最高分
 		flag = 0;
+		if (count % 2 == 0)
+			memcpy(preMap1, map, sizeof(int) * 100);
+		else memcpy(preMap2, map, sizeof(int) * 100);
 	for(int i=0;i<cbSize;i++)
 		for (int j = 0; j < cbSize; j++) {
 			if (map[i][j] == 2048) {
@@ -101,15 +113,24 @@ int main()
 			scoreA(cbSize);
 			//这里需要一个显示游戏结束的函数
 			prLost();
+			Sleep(3000);
 			inGame = 0;
 			break;
 		}
-	
+	count++;
 	}
+	int score = 0;
+	for (int i = 0; i < cbSize; i++)
+		for (int j = 0; j < cbSize; j++)
+			score += map[i][j];
+	//进行最高分判定
+	int preScore = 0;
+	char preUsername[11] = { 0 };
+	preScore = loadScore(preUsername);
+	printf("目前榜首是：%s %d\n", preUsername, preScore);//测试用代码，记得删除
+	if (score > preScore)
+		saveScore(score);
 	system("PAUSE");//暂停界面，便于观察
-
-
-
 	closegraph();
     return 0;
 }
