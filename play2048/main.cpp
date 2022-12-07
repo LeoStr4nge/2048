@@ -90,11 +90,17 @@ int main()
 		if (readKey())//判断该指令是否需要产生随机数
 			inputNumber(cbSize);//将随机数输入到数组
 		scoreA(cbSize);//在图形界面实时显示分数
-	 	maxScore();//显示最高分
 		flag = 0;
 		if (count % 2 == 0)
 			memcpy(preMap1, map, sizeof(int) * 100);
 		else memcpy(preMap2, map, sizeof(int) * 100);
+		int score = 0;
+		for (int i = 0; i < cbSize; i++)
+			for (int j = 0; j < cbSize; j++)
+				score += map[i][j];
+		
+
+
 	for(int i=0;i<cbSize;i++)
 		for (int j = 0; j < cbSize; j++) {
 			if (map[i][j] == 2048) {

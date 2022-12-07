@@ -2,6 +2,7 @@
 #include<graphics.h>
 #include<stdlib.h>
 #include<time.h>
+#include"claim.h"
 #define BOXSIZE 80  //格子大小	
 #define INTERVAL 12  //格子间隔
 extern int map[10][10];
@@ -40,6 +41,17 @@ void scoreA(int a)
 	char anew[14] = "保存(I)";
 	settextstyle(20, 12, "楷体");
 	outtextxy(278, 90, anew);
+	//进行最高分判定
+	//修改的
+	int preScore = 0;
+	char preUsername[11] = { 0 };
+	preScore = loadScore(preUsername);
+	char pre[11] = "0";
+	if (score > preScore)
+		preScore = score;
+	sprintf_s(pre, "%d", preScore);
+	outtextxy(200, 25, preScore);
+
 
 
 }
