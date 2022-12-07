@@ -3,10 +3,10 @@
 #define INTERVAL 12  //格子间隔
 
 /// <summary>
-/// 在图形界面显示实时分数
+/// 显示各种参数
 /// </summary>
 /// <param name="a">格子数cbSize</param>
-void scoreA(int a);
+void pram(int a);
 
 /// <summary>
 /// 创建a*a的棋盘

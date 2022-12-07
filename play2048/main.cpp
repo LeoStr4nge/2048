@@ -86,10 +86,10 @@ int main()
 	while (inGame == 1 )
 	{
 		creBox(cbSize);//创建棋盘
-		scoreA(cbSize);//显示数据
+		pram(cbSize);//显示数据
 		if (readKey())//判断该指令是否需要产生随机数
 			inputNumber(cbSize);//将随机数输入到数组
-		scoreA(cbSize);//在图形界面实时显示分数
+		pram(cbSize);//在图形界面实时显示分数
 		flag = 0;
 		if (count % 2 == 0)
 			memcpy(preMap1, map, sizeof(int) * 100);
@@ -105,8 +105,9 @@ int main()
 		for (int j = 0; j < cbSize; j++) {
 			if (map[i][j] == 2048) {
 				creBox(cbSize);
-				scoreA(cbSize);
+				pram(cbSize);
 				prWin();//显示你赢了
+				Sleep(3000);
 				inGame = 0;
 				break;
 			}
@@ -116,7 +117,7 @@ int main()
 	if (flag == 0)
 		{
 			creBox(cbSize);
-			scoreA(cbSize);
+			pram(cbSize);
 			//这里需要一个显示游戏结束的函数
 			prLost();
 			Sleep(3000);
@@ -133,10 +134,10 @@ int main()
 	int preScore = 0;
 	char preUsername[11] = { 0 };
 	preScore = loadScore(preUsername);
-	printf("目前榜首是：%s %d\n", preUsername, preScore);//测试用代码，记得删除
+	printf("目前榜首是：%s %d\n", preUsername, preScore);
 	if (score > preScore)
 		saveScore(score);
-	system("PAUSE");//暂停界面，便于观察
+	//system("PAUSE");//暂停界面，便于观察
 	closegraph();
     return 0;
 }

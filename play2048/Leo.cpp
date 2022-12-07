@@ -246,7 +246,7 @@ void loadSave()
 	FILE* save = fopen("save.txt", "rb");
 	if (save == NULL)
 	{
-		printf("文件错误\n");
+		printf("文件丢失\n");
 		exit(1);
 	}
 	else
@@ -268,7 +268,7 @@ void saveScore(int score)
 	FILE* fscore = fopen("score.txt", "wb");
 	if (fscore == NULL)
 	{
-		printf("文件错误\n");
+		printf("文件丢失\n");
 		exit(1);
 	}
 	else 

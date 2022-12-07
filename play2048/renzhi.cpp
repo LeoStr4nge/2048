@@ -12,7 +12,7 @@ extern int cbSize;
 /// 在图形界面显示各种参数
 /// </summary>
 /// <param name="a">格子数cbSize</param>
-void scoreA(int a)
+void pram(int a)
 {
 	//实时输出分数
 	solidroundrect(12, 12, 160, 120, 10, 10);
