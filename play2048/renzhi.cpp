@@ -14,6 +14,7 @@ extern int cbSize;
 /// <param name="a">格子数cbSize</param>
 void scoreA(int a)
 {
+	//实时输出分数
 	solidroundrect(12, 12, 160, 120, 10, 10);
 	int score = 0;
 	for (int i = 0; i < a; i++)
@@ -32,6 +33,7 @@ void scoreA(int a)
 	char top[10] = { "top:" };
 	settextstyle(50, 20, "Matura MT Script Capitals");
 	outtextxy(184, 24, top);
+	//显示悔棋和保存
 	solidroundrect(184, 78, 266, 122, 10, 10);
 	char regret[10] = "悔棋(R)";
 	settextstyle(20, 12, "楷体");
@@ -41,8 +43,7 @@ void scoreA(int a)
 	char anew[14] = "保存(I)";
 	settextstyle(20, 12, "楷体");
 	outtextxy(278, 90, anew);
-	//进行最高分判定
-	//修改的
+	//显示最高分
 	int preScore = 0;
 	char preUsername[11] = { 0 };
 	preScore = loadScore(preUsername);
@@ -50,11 +51,12 @@ void scoreA(int a)
 	if (score > preScore)
 		preScore = score;
 	sprintf_s(pre, "%d", preScore);
-	outtextxy(200, 25, preScore);
+	outtextxy(275, 35, pre);
 
 
 
 }
+
 
 /// <summary>
 /// 创建a*a的棋盘
@@ -71,7 +73,7 @@ void creBox(int a)   //创建棋盘
 			int x = (j + 1) * INTERVAL + j * BOXSIZE;
 			int y = (i + 1) * INTERVAL + i * BOXSIZE;
 			setfillcolor(RGB(205, 193, 180));//设置格子颜色
-			solidroundrect(x, y + 200, x + BOXSIZE, y + BOXSIZE + 200, 10, 10);
+			solidroundrect(x, y + 120, x + BOXSIZE, y + BOXSIZE + 120, 10, 10);
 			settextstyle(40, 0, "黑体");//文字格式
 			setbkmode(1);//文字背景颜色透明
 			char str[10] = "";//将int 转换成char
@@ -82,7 +84,7 @@ void creBox(int a)   //创建棋盘
 			int xTemp = (80 - tw) / 2;
 			int yTemp = (80 - th) / 2;
 			if (map[i][j] != 0) {
-				outtextxy(x + xTemp, y + yTemp + 200, str);
+				outtextxy(x + xTemp, y + yTemp + 120, str);
 
 			}// 将数字在格子中显示
 
@@ -122,15 +124,6 @@ void inputNumber(int a)
 			}
 	}
 
-}
-/// <summary>
-/// 在图形表示历史最高；
-/// </summary>
-void maxScore()
-{
-	char cf[15] = { "Highest score:" };
-	settextstyle(30, 0, "楷体");//文字格式
-	outtextxy(5, 5, cf);
 }
 /// <summary>
 /// 输出赢了界面

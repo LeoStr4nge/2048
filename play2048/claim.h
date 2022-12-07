@@ -24,12 +24,6 @@ int creNumber();
 /// 将随机数输入到数组
 /// </summary>
 void inputNumber(int a);
-
-/// <summary>
-/// 在图形表示历史最高；
-/// </summary>
-void maxScore();
-
 /// <summary>
 /// 格子向上移动
 /// </summary>

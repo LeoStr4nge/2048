@@ -80,7 +80,7 @@ int main()
 	
 	//绘制游戏界面
 	
-	initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE+200);
+	initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE+120);
 	int inGame = 1;//表示玩家还在游戏进程中，默认为1
 	int flag = 0;//表示棋盘上没有空格，默认为0
 	while (inGame == 1 )
