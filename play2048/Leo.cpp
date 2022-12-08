@@ -197,7 +197,6 @@ int readKey()
 	case'I':
 	case'i':
 		saveGame();
-		Sleep(2000);
 		initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE + 200);
 		return 0;
 		break;
@@ -221,7 +220,6 @@ void saveGame()
 	if (save == NULL)
 	{
 		printf("文件错误\n");
-		exit(1);
 	}
 	else
 	{
@@ -234,6 +232,8 @@ void saveGame()
 		char str[10] = "已保存";
 		settextstyle(40, 30, "华文琥珀");
 		outtextxy(50, 75, str);
+		Sleep(2000);
+		closegraph();
 	}
 	
 }

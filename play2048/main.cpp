@@ -6,19 +6,13 @@
 #include<Windows.h>
 #include"claim.h"
 int map[10][10];//装棋盘数据的二维数组
-int preMap1[10][10];//装悔棋棋盘的二维数组
+int preMap1[10][10];//装悔棋棋盘的两个二维数组
 int preMap2[10][10];
 int cbSize = 4;//棋盘大小，默认为4
 int count = 0;//记录游戏进行了几步
 char username[11] = { 0 };
-typedef struct rank
-{
-	char names[10];
-	int scores[10];
-}rank;
 int main()
 {
-	rank rankings;
 	int order;//菜单界面输入的命令
 	char trash;//用来装多输入的非法字符
 	printf("欢迎游玩2048\n");
@@ -79,12 +73,12 @@ int main()
 	Sleep(3000);
 	
 	//绘制游戏界面
-	
 	initgraph((cbSize + 1) * INTERVAL + cbSize * BOXSIZE, (cbSize + 1) * INTERVAL + cbSize * BOXSIZE+120);
 	int inGame = 1;//表示玩家还在游戏进程中，默认为1
 	int flag = 0;//表示棋盘上没有空格，默认为0
 	while (inGame == 1 )
 	{
+
 		creBox(cbSize);//创建棋盘
 		pram(cbSize);//显示数据
 		if (readKey())//判断该指令是否需要产生随机数
@@ -118,8 +112,7 @@ int main()
 		{
 			creBox(cbSize);
 			pram(cbSize);
-			//这里需要一个显示游戏结束的函数
-			prLost();
+			prLost();//显示你输了
 			Sleep(3000);
 			inGame = 0;
 			break;

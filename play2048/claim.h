@@ -24,6 +24,7 @@ int creNumber();
 /// 将随机数输入到数组
 /// </summary>
 void inputNumber(int a);
+
 /// <summary>
 /// 格子向上移动
 /// </summary>
@@ -77,10 +78,7 @@ int loadScore(char* preUsername);
 /// 输出赢了界面
 /// </summary>
 void prWin();
-// <summary>
-/// 防沉迷警告
-/// </summary>
-void antiAddiction();
+
 /// <summary>
 /// 显示你输了
 /// </summary>

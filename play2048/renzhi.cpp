@@ -146,21 +146,4 @@ void prLost()
 	outtextxy(5, 5, str);
 }
 
-/// <summary>
-/// 防沉迷警告
-/// </summary>
-void antiAddiction()
-{
-	char str1[200] = { "抵制不良游戏，拒绝盗版游戏." };
-	char str2[200] = "注意自我保护，谨防受骗上当.";
-	char str3[200] = "适度游戏益脑，沉迷游戏伤身.";
-	char str4[200] = "合理安排时间，享受健康生活.";
-	settextstyle(40, 20, "黑体");
-
-
-	outtextxy(20, 20, str1);
-	outtextxy(20, 80, str2);
-	outtextxy(20, 140, str3);
-	outtextxy(20, 200, str4);
-}
 	
