@@ -119,6 +119,7 @@ int main()
 		}
 	count++;
 	}
+
 	int score = 0;
 	for (int i = 0; i < cbSize; i++)
 		for (int j = 0; j < cbSize; j++)
@@ -127,10 +128,14 @@ int main()
 	int preScore = 0;
 	char preUsername[11] = { 0 };
 	preScore = loadScore(preUsername);
-	printf("目前榜首是：%s %d\n", preUsername, preScore);
 	if (score > preScore)
+	{
 		saveScore(score);
-	//system("PAUSE");//暂停界面，便于观察
+		printf("目前榜首是：%s %d\n", username, score);
+	}
+	else {
+		printf("目前榜首是：%s %d\n", preUsername, preScore);
+	}
 	closegraph();
     return 0;
 }

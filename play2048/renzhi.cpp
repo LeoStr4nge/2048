@@ -107,6 +107,7 @@ int creNumber()
 		return 2;
 	}
 }
+
 /// <summary>
 /// 将随机数输入到数组
 /// </summary>
@@ -125,6 +126,7 @@ void inputNumber(int a)
 	}
 
 }
+
 /// <summary>
 /// 输出赢了界面
 /// </summary>
@@ -135,6 +137,7 @@ void prWin()
 	settextstyle(30, 30, "楷体");//文字格式
 	outtextxy(5, 5, str);
 }
+
 /// <summary>
 /// 显示你输了
 /// </summary>
